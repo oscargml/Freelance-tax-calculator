@@ -27,17 +27,18 @@
             margin: 0 auto;
         }
 
-        /* Navigation Menu */
+        /* ========== IMPROVED NAVIGATION ========== */
         .navbar {
             background: white;
-            border-radius: 60px;
-            padding: 0.8rem 2rem;
+            border-radius: 20px;
+            padding: 0.8rem 1.5rem;
             margin-bottom: 2rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -49,54 +50,143 @@
             color: transparent;
         }
 
+        /* Desktop navigation */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 0.5rem;
             align-items: center;
         }
 
-        .nav-links a {
+        .nav-links a, .dropbtn {
             text-decoration: none;
             color: #2c5a7a;
             font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 40px;
             transition: 0.2s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: inherit;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .dropbtn:hover {
+            background: #eef2ff;
             color: #2563eb;
         }
 
+        /* Dropdown container */
         .dropdown {
             position: relative;
             display: inline-block;
         }
 
+        /* Dropdown content - starts hidden */
         .dropdown-content {
             display: none;
             position: absolute;
             background: white;
-            min-width: 220px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            min-width: 240px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             border-radius: 16px;
-            z-index: 1;
-            top: 30px;
+            z-index: 100;
+            top: 45px;
+            left: 0;
+            overflow: hidden;
         }
 
         .dropdown-content a {
             display: block;
-            padding: 10px 16px;
+            padding: 12px 20px;
             color: #1a2a3a;
+            text-decoration: none;
+            border-bottom: 1px solid #f0f2f5;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown-content a:hover {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* Show dropdown when 'open' class is added */
+        .dropdown.open .dropdown-content {
             display: block;
         }
 
-        .menu-icon {
+        /* Mobile menu button (hamburger) */
+        .menu-btn {
             display: none;
-            font-size: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
             cursor: pointer;
+            color: #1e3c72;
+            padding: 5px 10px;
+        }
+
+        /* Mobile sidebar overlay */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 200;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100%;
+            background: white;
+            z-index: 201;
+            padding: 2rem 1rem;
+            flex-direction: column;
+            gap: 0.5rem;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu a, .mobile-dropdown-btn {
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #1a2a3a;
+            font-weight: 500;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .mobile-menu a:hover, .mobile-dropdown-btn:hover {
+            background: #eef2ff;
+        }
+
+        .mobile-dropdown-content {
+            display: none;
+            padding-left: 1.5rem;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .mobile-dropdown-content a {
+            padding: 10px 16px;
+            font-size: 0.9rem;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            align-self: flex-end;
+            cursor: pointer;
+            color: #6c86a3;
+            margin-bottom: 1rem;
         }
 
         /* Header */
@@ -144,7 +234,6 @@
             border-radius: 32px;
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
             padding: 1.8rem;
-            transition: transform 0.2s;
         }
 
         .sidebar {
@@ -152,7 +241,6 @@
             min-width: 260px;
         }
 
-        /* Input groups */
         .input-group {
             margin-bottom: 1.5rem;
         }
@@ -170,7 +258,6 @@
             font-size: 1rem;
             border: 2px solid #e2e8f0;
             border-radius: 20px;
-            transition: 0.2s;
             background: #fefefe;
         }
 
@@ -197,7 +284,6 @@
             cursor: pointer;
             width: 100%;
             transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(37,99,235,0.3);
         }
 
         button:hover {
@@ -205,7 +291,6 @@
             transform: scale(0.98);
         }
 
-        /* Results area */
         .results {
             background: #f0f9ff;
             border-radius: 24px;
@@ -225,11 +310,6 @@
             justify-content: space-between;
             padding: 12px 0;
             border-bottom: 1px solid #cbd5e1;
-            font-size: 1.05rem;
-        }
-
-        .result-row strong {
-            color: #075985;
         }
 
         .penalty-warning {
@@ -238,10 +318,8 @@
             border-radius: 20px;
             margin-top: 15px;
             color: #991b1b;
-            font-weight: 500;
         }
 
-        /* Sidebar ads area */
         .ad-box {
             background: white;
             border-radius: 24px;
@@ -257,63 +335,6 @@
             color: #8ba0bc;
             letter-spacing: 1px;
             margin-bottom: 8px;
-        }
-
-        /* Responsive */
-        @media (max-width: 800px) {
-            .flex-main {
-                flex-direction: column;
-            }
-            .calculator-card {
-                padding: 1.2rem;
-            }
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                border-radius: 24px;
-            }
-            .nav-links {
-                justify-content: center;
-            }
-            .dropdown-content {
-                position: relative;
-                top: 0;
-                box-shadow: none;
-                background: #f1f5f9;
-                margin-top: 0.5rem;
-            }
-        }
-
-        footer {
-            margin-top: 3rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #4a627a;
-            border-top: 1px solid #cbd5e1;
-            padding-top: 2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.8rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: #2c5a7a;
-            font-weight: 500;
-        }
-
-        .disclaimer {
-            font-size: 0.7rem;
-            max-width: 700px;
-            margin: 0.5rem auto;
-            background: #fff5e0;
-            padding: 8px 12px;
-            border-radius: 60px;
         }
 
         .resources-section {
@@ -358,27 +379,78 @@
             color: #6c86a3;
             margin-top: 0.3rem;
         }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4a627a;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #2c5a7a;
+            font-weight: 500;
+        }
+
+        .disclaimer {
+            font-size: 0.7rem;
+            max-width: 700px;
+            margin: 0.5rem auto;
+            background: #fff5e0;
+            padding: 8px 12px;
+            border-radius: 60px;
+        }
+
+        @media (max-width: 800px) {
+            .flex-main {
+                flex-direction: column;
+            }
+            .calculator-card {
+                padding: 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- NEW NAVIGATION MENU -->
+    <!-- IMPROVED NAVIGATION BAR -->
     <nav class="navbar">
         <div class="logo">💰 FreelanceTaxShield</div>
-        <div class="nav-links">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <div class="nav-links" id="desktopNav">
             <a href="index.html">🏠 Calculator</a>
-            <div class="dropdown">
-                <a href="#">📚 Guides ▼</a>
-                <div class="dropdown-content">
+            <div class="dropdown" id="guidesDropdown">
+                <button class="dropbtn" id="guidesBtn">📚 Guides ▼</button>
+                <div class="dropdown-content" id="guidesContent">
                     <a href="quarterly-tax-dates.html">📅 Quarterly Tax Dates</a>
                     <a href="self-employment-tax-deductions.html">📝 Top Tax Deductions</a>
                     <a href="irs-underpayment-penalty-guide.html">⚠️ Underpayment Penalty</a>
                     <a href="freelancer-tax-deadline-calendar.html">📆 Tax Calendar</a>
                 </div>
             </div>
-            <div class="dropdown">
-                <a href="#">📊 Resources ▼</a>
-                <div class="dropdown-content">
+            <div class="dropdown" id="resourcesDropdown">
+                <button class="dropbtn" id="resourcesBtn">📊 Resources ▼</button>
+                <div class="dropdown-content" id="resourcesContent">
                     <a href="tax-brackets-2026.html">📈 2026 Tax Brackets</a>
                     <a href="state-tax-guide.html">🗺️ State Tax Guide</a>
                 </div>
@@ -388,6 +460,28 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Sidebar -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenuBtn">✕</button>
+        <a href="index.html">🏠 Calculator</a>
+        <button class="mobile-dropdown-btn" id="mobileGuidesBtn">📚 Guides ▼</button>
+        <div class="mobile-dropdown-content" id="mobileGuidesContent">
+            <a href="quarterly-tax-dates.html">📅 Quarterly Tax Dates</a>
+            <a href="self-employment-tax-deductions.html">📝 Top Tax Deductions</a>
+            <a href="irs-underpayment-penalty-guide.html">⚠️ Underpayment Penalty</a>
+            <a href="freelancer-tax-deadline-calendar.html">📆 Tax Calendar</a>
+        </div>
+        <button class="mobile-dropdown-btn" id="mobileResourcesBtn">📊 Resources ▼</button>
+        <div class="mobile-dropdown-content" id="mobileResourcesContent">
+            <a href="tax-brackets-2026.html">📈 2026 Tax Brackets</a>
+            <a href="state-tax-guide.html">🗺️ State Tax Guide</a>
+        </div>
+        <a href="about.html">ℹ️ About</a>
+        <a href="contact.html">📬 Contact</a>
+        <a href="privacy.html">🔒 Privacy Policy</a>
+    </div>
+
     <div class="header">
         <h1>💰 Freelancer Quarterly Tax Estimator</h1>
         <p>Estimate your self-employment tax & avoid IRS underpayment penalties</p>
@@ -395,7 +489,6 @@
     </div>
 
     <div class="flex-main">
-        <!-- MAIN CALCULATOR -->
         <div class="calculator-card">
             <form id="taxForm">
                 <div class="input-group">
@@ -403,83 +496,49 @@
                     <input type="number" id="freelanceIncome" placeholder="e.g., 65000" value="52000" step="1000">
                     <div class="helper-text">After expenses & deductions (your net profit)</div>
                 </div>
-
                 <div class="input-group">
                     <label>🏢 Other Income (W-2 job, side gig, interest)</label>
                     <input type="number" id="otherIncome" placeholder="e.g., 15000" value="8000" step="1000">
-                    <div class="helper-text">Income from employment, investments or second job</div>
                 </div>
-
                 <div class="input-group">
                     <label>📆 Quarterly taxes already paid in current year (YTD)</label>
                     <input type="number" id="paidSoFar" placeholder="e.g., 4200" value="3200" step="500">
-                    <div class="helper-text">Sum of all estimated tax payments made so far</div>
                 </div>
-
                 <div class="input-group">
-                    <label>👪 Filing status (for standard deduction)</label>
+                    <label>👪 Filing status</label>
                     <select id="filingStatus">
                         <option value="single">Single / Married filing separately</option>
                         <option value="married">Married filing jointly</option>
                         <option value="head">Head of household</option>
                     </select>
                 </div>
-
                 <button type="button" id="calculateBtn">🔍 Calculate Estimated Taxes</button>
             </form>
-
-            <!-- RESULTS SECTION -->
-            <div id="resultsArea" class="results" style="display: none;">
-                <!-- JS will fill -->
-            </div>
+            <div id="resultsArea" class="results" style="display: none;"></div>
         </div>
 
-        <!-- SIDEBAR -->
         <div class="sidebar">
             <div class="ad-box">
                 <div class="ad-label">Advertisement</div>
-                <div style="height:250px; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#6c86a3; border-radius:16px; font-size:13px;">
-                    ⚡ Ad Space - Replace with AdSense code<br>(300x250)
-                </div>
+                <div style="height:250px; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#6c86a3; border-radius:16px;">⚡ Ad Space - Replace with AdSense</div>
             </div>
-
             <div class="ad-box" style="background:#eef2ff">
-                <h4 style="margin-bottom: 6px;">📅 2026 Q2 Deadline</h4>
-                <p style="font-size: 0.85rem;">June 15, 2026 — avoid penalty by paying estimated tax.</p>
-                <hr style="margin: 10px 0;">
-                <p style="font-size: 0.75rem;">💡 Pro tip: save 25-30% of each freelance check.</p>
+                <h4>📅 2026 Q2 Deadline</h4>
+                <p>June 15, 2026 — avoid penalty.</p>
+                <p>💡 Save 25-30% of each freelance check.</p>
             </div>
         </div>
     </div>
 
-    <!-- NEW RESOURCES SECTION (quick links to all pages) -->
     <div class="resources-section">
         <h3>📚 Free Freelancer Tax Resources</h3>
         <div class="resource-grid">
-            <div class="resource-card">
-                <a href="quarterly-tax-dates.html">📅 Quarterly Tax Dates</a>
-                <p>2026 deadlines & safe harbor rules</p>
-            </div>
-            <div class="resource-card">
-                <a href="self-employment-tax-deductions.html">📝 Top 15 Deductions</a>
-                <p>Lower your tax bill legally</p>
-            </div>
-            <div class="resource-card">
-                <a href="irs-underpayment-penalty-guide.html">⚠️ Underpayment Penalty</a>
-                <p>Avoid IRS penalties</p>
-            </div>
-            <div class="resource-card">
-                <a href="freelancer-tax-deadline-calendar.html">📆 Tax Calendar</a>
-                <p>Printable reminder schedule</p>
-            </div>
-            <div class="resource-card">
-                <a href="tax-brackets-2026.html">📈 2026 Tax Brackets</a>
-                <p>Federal rates & standard deduction</p>
-            </div>
-            <div class="resource-card">
-                <a href="state-tax-guide.html">🗺️ State Tax Guide</a>
-                <p>No-tax vs high-tax states</p>
-            </div>
+            <div class="resource-card"><a href="quarterly-tax-dates.html">📅 Quarterly Tax Dates</a><p>2026 deadlines</p></div>
+            <div class="resource-card"><a href="self-employment-tax-deductions.html">📝 Top 15 Deductions</a><p>Lower your tax bill</p></div>
+            <div class="resource-card"><a href="irs-underpayment-penalty-guide.html">⚠️ Underpayment Penalty</a><p>Avoid IRS penalties</p></div>
+            <div class="resource-card"><a href="freelancer-tax-deadline-calendar.html">📆 Tax Calendar</a><p>Printable schedule</p></div>
+            <div class="resource-card"><a href="tax-brackets-2026.html">📈 2026 Tax Brackets</a><p>Federal rates</p></div>
+            <div class="resource-card"><a href="state-tax-guide.html">🗺️ State Tax Guide</a><p>No-tax vs high-tax</p></div>
         </div>
     </div>
 
@@ -490,113 +549,146 @@
             <a href="about.html">About</a>
             <a href="sitemap.xml">Sitemap</a>
         </div>
-        <div class="disclaimer" id="mainDisclaimer">
-            ⚠️ This tool provides estimates only and does not constitute official tax advice. Tax laws change, and individual circumstances vary. Consult a licensed CPA or tax professional.
-        </div>
-        <p>© 2026 Freelance Tax Shield — Helping 1099 workers stay penalty-free.</p>
+        <div class="disclaimer">⚠️ Estimates only. Not tax advice. Consult a CPA.</div>
+        <p>© 2026 Freelance Tax Shield</p>
     </footer>
 </div>
 
 <script>
-    (function() {
-        function computeTax(freelanceIncome, otherIncome, paidSoFar, filingStatus) {
-            let totalIncome = freelanceIncome + otherIncome;
-            let standardDeduction = 0;
-            if (filingStatus === 'single') standardDeduction = 14600;
-            else if (filingStatus === 'married') standardDeduction = 29200;
-            else standardDeduction = 21900;
+    // ========== DROPDOWN CONTROLLER (click to open, stays open) ==========
+    const guidesDropdown = document.getElementById('guidesDropdown');
+    const resourcesDropdown = document.getElementById('resourcesDropdown');
+    const guidesBtn = document.getElementById('guidesBtn');
+    const resourcesBtn = document.getElementById('resourcesBtn');
 
-            let taxableIncome = Math.max(0, totalIncome - standardDeduction);
-            
-            let incomeTax = 0;
-            if (taxableIncome <= 11600) incomeTax = taxableIncome * 0.10;
-            else if (taxableIncome <= 47150) incomeTax = 1160 + (taxableIncome - 11600) * 0.12;
-            else if (taxableIncome <= 100525) incomeTax = 5426 + (taxableIncome - 47150) * 0.22;
-            else if (taxableIncome <= 191950) incomeTax = 17168.5 + (taxableIncome - 100525) * 0.24;
-            else if (taxableIncome <= 243725) incomeTax = 39110.5 + (taxableIncome - 191950) * 0.32;
-            else if (taxableIncome <= 609350) incomeTax = 55678.5 + (taxableIncome - 243725) * 0.35;
-            else incomeTax = 183647.25 + (taxableIncome - 609350) * 0.37;
-            
-            let seTaxable = freelanceIncome * 0.9235;
-            let seTax = seTaxable * 0.153;
-            
-            let totalTax = incomeTax + seTax;
-            let remainingTax = Math.max(0, totalTax - paidSoFar);
-            let quartersRemaining = 3;
-            let recommendedPerQuarter = remainingTax / quartersRemaining;
-            let penaltyRisk = (paidSoFar < (totalTax * 0.65)) && (remainingTax > 1000);
-            
-            return {
-                totalTax: totalTax,
-                remainingTax: remainingTax,
-                recommendedQuarterly: recommendedPerQuarter,
-                penaltyRisk: penaltyRisk,
-                incomeTax: incomeTax,
-                seTax: seTax,
-                taxableIncome: taxableIncome
-            };
-        }
+    function closeAllDropdowns() {
+        if (guidesDropdown) guidesDropdown.classList.remove('open');
+        if (resourcesDropdown) resourcesDropdown.classList.remove('open');
+    }
 
-        function formatUSD(value) {
-            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(value);
-        }
-
-        function displayResults() {
-            const freelanceInput = document.getElementById('freelanceIncome');
-            const otherInput = document.getElementById('otherIncome');
-            const paidInput = document.getElementById('paidSoFar');
-            const filingSelect = document.getElementById('filingStatus');
-            
-            let freelanceIncome = parseFloat(freelanceInput.value);
-            let otherIncome = parseFloat(otherInput.value);
-            let paidSoFar = parseFloat(paidInput.value);
-            let filingStatus = filingSelect.value;
-            
-            if (isNaN(freelanceIncome)) freelanceIncome = 0;
-            if (isNaN(otherIncome)) otherIncome = 0;
-            if (isNaN(paidSoFar)) paidSoFar = 0;
-            
-            const result = computeTax(freelanceIncome, otherIncome, paidSoFar, filingStatus);
-            
-            const resultsDiv = document.getElementById('resultsArea');
-            resultsDiv.style.display = 'block';
-            
-            let penaltyHtml = '';
-            if (result.penaltyRisk) {
-                penaltyHtml = `<div class="penalty-warning">⚠️ <strong>Underpayment Penalty Risk:</strong> You may owe an IRS penalty if you don't increase your next quarterly payment. Consider paying at least ${formatUSD(result.recommendedQuarterly)} by the next deadline.</div>`;
-            } else if (result.remainingTax < 500 && result.remainingTax >= 0) {
-                penaltyHtml = `<div class="penalty-warning" style="background:#e0f2fe; color:#0c4a6e;">✅ Good job! Your estimated tax payments are on track. No penalty expected.</div>`;
-            }
-            
-            let quarterlyAdvice = (result.remainingTax <= 0) ? "You've overpaid or are on track! No further payment required this year." : 
-                `💵 <strong>Recommended next quarterly payment:</strong> ${formatUSD(result.recommendedQuarterly)} <span style="font-size:0.8rem;">(for each remaining quarter)</span>`;
-            
-            resultsDiv.innerHTML = `
-                <h3>📋 Your Estimated Tax Summary</h3>
-                <div class="result-row"><span>💰 Total estimated tax (income + SE tax):</span> <strong>${formatUSD(result.totalTax)}</strong></div>
-                <div class="result-row"><span>📌 Already paid this year:</span> <strong>${formatUSD(paidSoFar)}</strong></div>
-                <div class="result-row"><span>⚠️ Remaining tax due:</span> <strong>${formatUSD(result.remainingTax)}</strong></div>
-                <div class="result-row"><span>🧾 Breakdown – Income tax:</span> <span>${formatUSD(result.incomeTax)}</span></div>
-                <div class="result-row"><span>🧾 Self-employment tax (15.3%):</span> <span>${formatUSD(result.seTax)}</span></div>
-                <div style="margin-top: 16px; padding: 12px; background:#ffffff; border-radius: 20px;">
-                    ${quarterlyAdvice}
-                </div>
-                ${penaltyHtml}
-                <div style="font-size: 0.7rem; margin-top: 14px; border-top: 1px solid #cbd5e1; padding-top: 8px;">
-                * Estimates based on 2025-2026 federal brackets + standard deduction. State taxes not included.
-                </div>
-            `;
-        }
-        
-        const calcBtn = document.getElementById('calculateBtn');
-        calcBtn.addEventListener('click', () => {
-            displayResults();
+    if (guidesBtn) {
+        guidesBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeAllDropdowns();
+            guidesDropdown.classList.toggle('open');
         });
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            displayResults();
+    }
+
+    if (resourcesBtn) {
+        resourcesBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeAllDropdowns();
+            resourcesDropdown.classList.toggle('open');
         });
-    })();
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function() {
+        closeAllDropdowns();
+    });
+
+    // Prevent closing when clicking inside dropdown
+    const guideContent = document.getElementById('guidesContent');
+    const resourceContent = document.getElementById('resourcesContent');
+    if (guideContent) guideContent.addEventListener('click', function(e) { e.stopPropagation(); });
+    if (resourceContent) resourceContent.addEventListener('click', function(e) { e.stopPropagation(); });
+
+    // ========== MOBILE MENU ==========
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileGuidesBtn = document.getElementById('mobileGuidesBtn');
+    const mobileResourcesBtn = document.getElementById('mobileResourcesBtn');
+    const mobileGuidesContent = document.getElementById('mobileGuidesContent');
+    const mobileResourcesContent = document.getElementById('mobileResourcesContent');
+
+    function openMobileMenu() {
+        mobileMenu.style.display = 'flex';
+        mobileOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.style.display = 'none';
+        mobileOverlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    if (menuBtn) menuBtn.addEventListener('click', openMobileMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMobileMenu);
+    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
+
+    if (mobileGuidesBtn) {
+        mobileGuidesBtn.addEventListener('click', function() {
+            const isVisible = mobileGuidesContent.style.display === 'flex';
+            mobileGuidesContent.style.display = isVisible ? 'none' : 'flex';
+        });
+    }
+
+    if (mobileResourcesBtn) {
+        mobileResourcesBtn.addEventListener('click', function() {
+            const isVisible = mobileResourcesContent.style.display === 'flex';
+            mobileResourcesContent.style.display = isVisible ? 'none' : 'flex';
+        });
+    }
+
+    // ========== TAX CALCULATOR ==========
+    function computeTax(freelanceIncome, otherIncome, paidSoFar, filingStatus) {
+        let totalIncome = freelanceIncome + otherIncome;
+        let standardDeduction = filingStatus === 'single' ? 14600 : (filingStatus === 'married' ? 29200 : 21900);
+        let taxableIncome = Math.max(0, totalIncome - standardDeduction);
+        
+        let incomeTax = 0;
+        if (taxableIncome <= 11600) incomeTax = taxableIncome * 0.10;
+        else if (taxableIncome <= 47150) incomeTax = 1160 + (taxableIncome - 11600) * 0.12;
+        else if (taxableIncome <= 100525) incomeTax = 5426 + (taxableIncome - 47150) * 0.22;
+        else if (taxableIncome <= 191950) incomeTax = 17168.5 + (taxableIncome - 100525) * 0.24;
+        else if (taxableIncome <= 243725) incomeTax = 39110.5 + (taxableIncome - 191950) * 0.32;
+        else if (taxableIncome <= 609350) incomeTax = 55678.5 + (taxableIncome - 243725) * 0.35;
+        else incomeTax = 183647.25 + (taxableIncome - 609350) * 0.37;
+        
+        let seTax = freelanceIncome * 0.9235 * 0.153;
+        let totalTax = incomeTax + seTax;
+        let remainingTax = Math.max(0, totalTax - paidSoFar);
+        let recommendedPerQuarter = remainingTax / 3;
+        let penaltyRisk = (paidSoFar < (totalTax * 0.65)) && (remainingTax > 1000);
+        
+        return { totalTax, remainingTax, recommendedQuarterly: recommendedPerQuarter, penaltyRisk, incomeTax, seTax };
+    }
+
+    function formatUSD(value) {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(value);
+    }
+
+    function displayResults() {
+        let freelanceIncome = parseFloat(document.getElementById('freelanceIncome').value) || 0;
+        let otherIncome = parseFloat(document.getElementById('otherIncome').value) || 0;
+        let paidSoFar = parseFloat(document.getElementById('paidSoFar').value) || 0;
+        let filingStatus = document.getElementById('filingStatus').value;
+        
+        const result = computeTax(freelanceIncome, otherIncome, paidSoFar, filingStatus);
+        const resultsDiv = document.getElementById('resultsArea');
+        resultsDiv.style.display = 'block';
+        
+        let penaltyHtml = result.penaltyRisk ? `<div class="penalty-warning">⚠️ Underpayment Penalty Risk. Pay ${formatUSD(result.recommendedQuarterly)} by next deadline.</div>` : '';
+        
+        resultsDiv.innerHTML = `
+            <h3>📋 Your Estimated Tax Summary</h3>
+            <div class="result-row"><span>💰 Total estimated tax:</span> <strong>${formatUSD(result.totalTax)}</strong></div>
+            <div class="result-row"><span>📌 Already paid:</span> <strong>${formatUSD(paidSoFar)}</strong></div>
+            <div class="result-row"><span>⚠️ Remaining tax due:</span> <strong>${formatUSD(result.remainingTax)}</strong></div>
+            <div class="result-row"><span>🧾 Income tax:</span> ${formatUSD(result.incomeTax)}</div>
+            <div class="result-row"><span>🧾 Self-employment tax:</span> ${formatUSD(result.seTax)}</div>
+            <div style="margin-top:16px; padding:12px; background:white; border-radius:20px;">
+                💵 <strong>Recommended next payment:</strong> ${formatUSD(result.recommendedQuarterly)} (per quarter)
+            </div>
+            ${penaltyHtml}
+        `;
+    }
+
+    document.getElementById('calculateBtn').addEventListener('click', displayResults);
+    window.addEventListener('DOMContentLoaded', displayResults);
 </script>
 </body>
 </html>
