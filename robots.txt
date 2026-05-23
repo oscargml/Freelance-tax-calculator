@@ -1,0 +1,29 @@
+# robots.txt for Freelance Tax Shield
+# Blocked: None (allow full indexing for AdSense approval)
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://YOURDOMAIN.com/sitemap.xml
+
+# Crawl delay (gentle on server – optional)
+Crawl-delay: 2
+
+# Disallow admin or private folders (if any exist)
+Disallow: /private/
+Disallow: /temp/
+
+# Rules for specific bots (optional)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /

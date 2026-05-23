@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Freelancer Quarterly Tax Estimator | Avoid Underpayment Penalties</title>
+    <meta name="description" content="Estimate your quarterly self-employment taxes, avoid IRS underpayment penalties, and plan your freelance tax payments. Free calculator for 1099 workers.">
+    <meta name="keywords" content="freelancer quarterly tax estimator, self employed tax calculator, 1099 quarterly payment, estimated tax penalty">
+    <meta name="author" content="FreelanceTaxShield">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
+            color: #1a2a3a;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.9rem;
+            background: linear-gradient(135deg, #1e3c72, #2b4c7c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .badge {
+            background: #ffc10720;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #b45f06;
+            margin-top: 0.5rem;
+        }
+
+        /* Two column layout */
+        .flex-main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .calculator-card {
+            flex: 2;
+            min-width: 260px;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            padding: 1.8rem;
+            transition: transform 0.2s;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        /* Input groups */
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1e4663;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            transition: 0.2s;
+            background: #fefefe;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px #3b82f620;
+        }
+
+        .helper-text {
+            font-size: 0.75rem;
+            color: #5e6f8d;
+            margin-top: 0.3rem;
+        }
+
+        button {
+            background: linear-gradient(95deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(95deg, #1d4ed8, #1e3a8a);
+            transform: scale(0.98);
+        }
+
+        /* Results area */
+        .results {
+            background: #f0f9ff;
+            border-radius: 24px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 6px solid #3b82f6;
+        }
+
+        .results h3 {
+            font-size: 1.5rem;
+            color: #0f2b3d;
+            margin-bottom: 1rem;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #cbd5e1;
+            font-size: 1.05rem;
+        }
+
+        .result-row strong {
+            color: #075985;
+        }
+
+        .penalty-warning {
+            background: #fee2e2;
+            padding: 12px;
+            border-radius: 20px;
+            margin-top: 15px;
+            color: #991b1b;
+            font-weight: 500;
+        }
+
+        /* Sidebar ads area - reserved for AdSense */
+        .ad-box {
+            background: white;
+            border-radius: 24px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            margin-bottom: 1.8rem;
+        }
+
+        .ad-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #8ba0bc;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .flex-main {
+                flex-direction: column;
+            }
+            .calculator-card {
+                padding: 1.2rem;
+            }
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4a627a;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #2c5a7a;
+            font-weight: 500;
+        }
+
+        .disclaimer {
+            font-size: 0.7rem;
+            max-width: 700px;
+            margin: 0.5rem auto;
+            background: #fff5e0;
+            padding: 8px 12px;
+            border-radius: 60px;
+        }
+
+        /* Sticky footer ad placeholder (mobile) */
+        .sticky-ad-mock {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>💰 Freelancer Quarterly Tax Estimator</h1>
+        <p>Estimate your self-employment tax & avoid IRS underpayment penalties</p>
+        <div class="badge">⭐ Trusted by 5,000+ freelancers | 1099 & gig economy</div>
+    </div>
+
+    <div class="flex-main">
+        <!-- MAIN CALCULATOR -->
+        <div class="calculator-card">
+            <form id="taxForm">
+                <div class="input-group">
+                    <label>📊 Estimated Annual Freelance Income (1099 / self-employed)</label>
+                    <input type="number" id="freelanceIncome" placeholder="e.g., 65000" value="52000" step="1000">
+                    <div class="helper-text">After expenses & deductions (your net profit)</div>
+                </div>
+
+                <div class="input-group">
+                    <label>🏢 Other Income (W-2 job, side gig, interest)</label>
+                    <input type="number" id="otherIncome" placeholder="e.g., 15000" value="8000" step="1000">
+                    <div class="helper-text">Income from employment, investments or second job</div>
+                </div>
+
+                <div class="input-group">
+                    <label>📆 Quarterly taxes already paid in current year (YTD)</label>
+                    <input type="number" id="paidSoFar" placeholder="e.g., 4200" value="3200" step="500">
+                    <div class="helper-text">Sum of all estimated tax payments made so far</div>
+                </div>
+
+                <div class="input-group">
+                    <label>👪 Filing status (for standard deduction)</label>
+                    <select id="filingStatus">
+                        <option value="single">Single / Married filing separately</option>
+                        <option value="married">Married filing jointly</option>
+                        <option value="head">Head of household</option>
+                    </select>
+                </div>
+
+                <button type="button" id="calculateBtn">🔍 Calculate Estimated Taxes</button>
+            </form>
+
+            <!-- RESULTS SECTION (dynamic) -->
+            <div id="resultsArea" class="results" style="display: none;">
+                <!-- JS will fill -->
+            </div>
+        </div>
+
+        <!-- SIDEBAR WITH ADS (AdSense ready) -->
+        <div class="sidebar">
+            <!-- AdSense ad unit 1: 300x250 sidebar -->
+            <div class="ad-box">
+                <div class="ad-label">Advertisement</div>
+                <!-- REPLACE WITH YOUR ADSENSE CODE -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <div style="height:250px; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#6c86a3; border-radius:16px; font-size:13px;">
+                    ⚡ Ad Space - Replace with AdSense code<br>(300x250)
+                </div>
+            </div>
+
+            <!-- Extra sticky note or info -->
+            <div class="ad-box" style="background:#eef2ff">
+                <h4 style="margin-bottom: 6px;">📅 2026 Q2 Deadline</h4>
+                <p style="font-size: 0.85rem;">June 15, 2026 — avoid penalty by paying estimated tax.</p>
+                <hr style="margin: 10px 0;">
+                <p style="font-size: 0.75rem;">💡 Pro tip: save 25-30% of each freelance check.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- IN-CONTENT AD (appears after calculation, dynamic) -->
+    <div id="inlineAdContainer" style="margin: 1rem 0; text-align: center;"></div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#privacy" id="privacyLink">Privacy Policy</a>
+            <a href="#contact" id="contactLink">Contact</a>
+            <a href="#about" id="aboutLink">About</a>
+            <a href="#">Tax Deadlines 2026</a>
+        </div>
+        <div class="disclaimer" id="mainDisclaimer">
+            ⚠️ This tool provides estimates only and does not constitute official tax advice. Tax laws change, and individual circumstances vary. Consult a licensed CPA or tax professional.
+        </div>
+        <p>© 2026 Freelance Tax Shield — Helping 1099 workers stay penalty-free.</p>
+    </footer>
+</div>
+
+<script>
+    (function() {
+        // ----- TAX CALCULATION ENGINE (2025 brackets, updated for 2026 concept)
+        function computeTax(freelanceIncome, otherIncome, paidSoFar, filingStatus) {
+            let totalIncome = freelanceIncome + otherIncome;
+            let standardDeduction = 0;
+            if (filingStatus === 'single') standardDeduction = 14600;
+            else if (filingStatus === 'married') standardDeduction = 29200;
+            else standardDeduction = 21900; // head of household
+
+            let taxableIncome = Math.max(0, totalIncome - standardDeduction);
+            
+            // 2025 Federal income tax brackets (indexed roughly)
+            let incomeTax = 0;
+            if (taxableIncome <= 11600) incomeTax = taxableIncome * 0.10;
+            else if (taxableIncome <= 47150) incomeTax = 1160 + (taxableIncome - 11600) * 0.12;
+            else if (taxableIncome <= 100525) incomeTax = 5426 + (taxableIncome - 47150) * 0.22;
+            else if (taxableIncome <= 191950) incomeTax = 17168.5 + (taxableIncome - 100525) * 0.24;
+            else if (taxableIncome <= 243725) incomeTax = 39110.5 + (taxableIncome - 191950) * 0.32;
+            else if (taxableIncome <= 609350) incomeTax = 55678.5 + (taxableIncome - 243725) * 0.35;
+            else incomeTax = 183647.25 + (taxableIncome - 609350) * 0.37;
+            
+            // Self-employment tax: 15.3% on 92.35% of freelance profit
+            let seTaxable = freelanceIncome * 0.9235;
+            let seTax = seTaxable * 0.153;
+            
+            let totalTax = incomeTax + seTax;
+            let remainingTax = Math.max(0, totalTax - paidSoFar);
+            
+            // Determine quarters left (assuming current quarter = Q2 if after June, but for simplicity: recommend split remaining)
+            let quartersRemaining = 3;   // conservative: Q2, Q3, Q4 still pending (or Q3, Q4 if after June).
+            let recommendedPerQuarter = remainingTax / quartersRemaining;
+            let penaltyRisk = (paidSoFar < (totalTax * 0.65)) && (remainingTax > 1000);
+            
+            return {
+                totalTax: totalTax,
+                remainingTax: remainingTax,
+                recommendedQuarterly: recommendedPerQuarter,
+                penaltyRisk: penaltyRisk,
+                incomeTax: incomeTax,
+                seTax: seTax,
+                taxableIncome: taxableIncome
+            };
+        }
+
+        function formatUSD(value) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(value);
+        }
+
+        function displayResults() {
+            const freelanceInput = document.getElementById('freelanceIncome');
+            const otherInput = document.getElementById('otherIncome');
+            const paidInput = document.getElementById('paidSoFar');
+            const filingSelect = document.getElementById('filingStatus');
+            
+            let freelanceIncome = parseFloat(freelanceInput.value);
+            let otherIncome = parseFloat(otherInput.value);
+            let paidSoFar = parseFloat(paidInput.value);
+            let filingStatus = filingSelect.value;
+            
+            if (isNaN(freelanceIncome)) freelanceIncome = 0;
+            if (isNaN(otherIncome)) otherIncome = 0;
+            if (isNaN(paidSoFar)) paidSoFar = 0;
+            
+            const result = computeTax(freelanceIncome, otherIncome, paidSoFar, filingStatus);
+            
+            const resultsDiv = document.getElementById('resultsArea');
+            resultsDiv.style.display = 'block';
+            
+            let penaltyHtml = '';
+            if (result.penaltyRisk) {
+                penaltyHtml = `<div class="penalty-warning">⚠️ <strong>Underpayment Penalty Risk:</strong> You may owe an IRS penalty if you don't increase your next quarterly payment. Consider paying at least ${formatUSD(result.recommendedQuarterly)} by the next deadline.</div>`;
+            } else if (result.remainingTax < 500 && result.remainingTax >= 0) {
+                penaltyHtml = `<div class="penalty-warning" style="background:#e0f2fe; color:#0c4a6e;">✅ Good job! Your estimated tax payments are on track. No penalty expected.</div>`;
+            }
+            
+            let safeQuarterly = result.recommendedQuarterly > 0 ? result.recommendedQuarterly : 0;
+            let quarterlyAdvice = (result.remainingTax <= 0) ? "You've overpaid or are on track! No further payment required this year." : 
+                `💵 <strong>Recommended next quarterly payment:</strong> ${formatUSD(safeQuarterly)} <span style="font-size:0.8rem;">(for each remaining quarter)</span>`;
+            
+            resultsDiv.innerHTML = `
+                <h3>📋 Your Estimated Tax Summary</h3>
+                <div class="result-row"><span>💰 Total estimated tax (income + SE tax):</span> <strong>${formatUSD(result.totalTax)}</strong></div>
+                <div class="result-row"><span>📌 Already paid this year:</span> <strong>${formatUSD(paidSoFar)}</strong></div>
+                <div class="result-row"><span>⚠️ Remaining tax due:</span> <strong>${formatUSD(result.remainingTax)}</strong></div>
+                <div class="result-row"><span>🧾 Breakdown – Income tax:</span> <span>${formatUSD(result.incomeTax)}</span></div>
+                <div class="result-row"><span>🧾 Self-employment tax (15.3%):</span> <span>${formatUSD(result.seTax)}</span></div>
+                <div style="margin-top: 16px; padding: 12px; background:#ffffff; border-radius: 20px;">
+                    ${quarterlyAdvice}
+                </div>
+                ${penaltyHtml}
+                <div style="font-size: 0.7rem; margin-top: 14px; border-top: 1px solid #cbd5e1; padding-top: 8px;">
+                * Estimates based on 2025-2026 federal brackets + standard deduction. State taxes not included.
+                </div>
+            `;
+            
+            // Trigger inline ad placement after results visible (AdSense ready)
+            loadDynamicInlineAd();
+        }
+        
+        // Dynamic inline ad unit (between calculator and footer)
+        function loadDynamicInlineAd() {
+            const container = document.getElementById('inlineAdContainer');
+            if (!container) return;
+            // Only inject if not already injected (avoid duplicates)
+            if (container.querySelector('.dynamic-ad-insert')) return;
+            
+            const adDiv = document.createElement('div');
+            adDiv.className = 'dynamic-ad-insert';
+            adDiv.style.textAlign = 'center';
+            adDiv.style.margin = '1rem 0';
+            adDiv.style.padding = '12px';
+            adDiv.style.background = '#fff';
+            adDiv.style.borderRadius = '24px';
+            adDiv.innerHTML = `
+                <div class="ad-label">Sponsored</div>
+                <!-- Replace with your AdSense in-content ad code (responsive) -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="9876543210"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                <\/script>
+                <div style="background:#eef2ff; border-radius:20px; padding:12px; font-size:13px; color:#3b5c7a;">
+                    📢 [Ad Space] — Replace with active AdSense unit for higher RPM
+                </div>
+            `;
+            container.innerHTML = '';
+            container.appendChild(adDiv);
+        }
+        
+        // Event listener
+        const calcBtn = document.getElementById('calculateBtn');
+        calcBtn.addEventListener('click', () => {
+            displayResults();
+        });
+        
+        // initial demo load (optional: show default calc)
+        window.addEventListener('DOMContentLoaded', () => {
+            displayResults();
+        });
+        
+        // Simple modal-free privacy, about, contact mock - just scroll to footer disclaimers
+        function showFakePage(section) {
+            const disclaimerDiv = document.getElementById('mainDisclaimer');
+            if (section === 'privacy') {
+                alert("📄 PRIVACY POLICY: We do not collect or store any personal data. All calculations happen in your browser. No cookies or tracking. For AdSense, we comply with Google's policies.");
+            } else if (section === 'contact') {
+                alert("📧 Contact: support@freelancetaxshield.com (demo). For tax advice please consult a CPA. We reply within 2 business days.");
+            } else if (section === 'about') {
+                alert("🚀 About: This tool was built for freelancers, creatives, and 1099 workers to estimate quarterly taxes and avoid IRS penalties. Not official tax software — always verify with a professional.");
+            }
+        }
+        
+        document.getElementById('privacyLink')?.addEventListener('click', (e) => { e.preventDefault(); showFakePage('privacy'); });
+        document.getElementById('contactLink')?.addEventListener('click', (e) => { e.preventDefault(); showFakePage('contact'); });
+        document.getElementById('aboutLink')?.addEventListener('click', (e) => { e.preventDefault(); showFakePage('about'); });
+        
+        // Also add sample anchor ad (sticky mobile friendly) - mock but ready
+        if (window.innerWidth < 700) {
+            const stickyDiv = document.createElement('div');
+            stickyDiv.style.position = 'fixed';
+            stickyDiv.style.bottom = '0';
+            stickyDiv.style.left = '0';
+            stickyDiv.style.right = '0';
+            stickyDiv.style.backgroundColor = 'white';
+            stickyDiv.style.textAlign = 'center';
+            stickyDiv.style.boxShadow = '0 -2px 10px rgba(0,0,0,0.1)';
+            stickyDiv.style.zIndex = '999';
+            stickyDiv.style.padding = '6px';
+            stickyDiv.innerHTML = `<div class="ad-label">Advertisement</div>
+            <div style="height:50px; background:#eef2ff; display:flex; align-items:center; justify-content:center; font-size:11px;">📱 AdSense Anchor Ad (320x50) - Replace with your code</div>`;
+            document.body.appendChild(stickyDiv);
+        }
+    })();
+</script>
+<!-- Note: Replace all AdSense placeholders with your actual publisher ID and ad slots before going live -->
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Freelance Tax Shield</title>
+    <meta name="description" content="Get in touch with Freelance Tax Shield. Questions about the calculator, partnerships, or feedback? We'd love to hear from you.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #1a2a3a; line-height: 1.6; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 32px; padding: 2rem; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1); }
+        h1 { color: #1e3c72; margin-bottom: 1rem; border-left: 5px solid #2563eb; padding-left: 1rem; }
+        .contact-info { background: #eef2ff; border-radius: 20px; padding: 1.5rem; margin: 1.5rem 0; }
+        .contact-info p { margin: 0.8rem 0; }
+        .contact-info a { color: #2563eb; text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+        .form-group { margin-bottom: 1.2rem; }
+        label { font-weight: 600; display: block; margin-bottom: 0.4rem; color: #1e4663; }
+        input, textarea, select { width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 16px; font-family: inherit; font-size: 1rem; }
+        input:focus, textarea:focus { outline: none; border-color: #3b82f6; }
+        button { background: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 40px; font-size: 1rem; font-weight: bold; cursor: pointer; width: 100%; }
+        button:hover { background: #1d4ed8; }
+        .note { font-size: 0.75rem; color: #6c86a3; margin-top: 1rem; text-align: center; }
+        .back-link { margin-bottom: 1rem; display: inline-block; color: #2563eb; text-decoration: none; }
+        footer { margin-top: 2rem; text-align: center; font-size: 0.8rem; color: #6c86a3; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
+        .success-message { background: #dcfce7; color: #166534; padding: 1rem; border-radius: 16px; margin-top: 1rem; display: none; }
+        @media (max-width: 600px) { .container { padding: 1rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← Back to Tax Calculator</a>
+    <h1>📬 Contact Us</h1>
+    <p>Have questions about quarterly taxes? Found a bug? Want to collaborate? Reach out below.</p>
+
+    <div class="contact-info">
+        <p>📧 <strong>Email:</strong> <a href="mailto:support@freelancetaxshield.com">support@freelancetaxshield.com</a></p>
+        <p>⏰ <strong>Response Time:</strong> Within 48 hours (Mon–Fri)</p>
+        <p>💬 <strong>Partnerships & Media:</strong> <a href="mailto:partners@freelancetaxshield.com">partners@freelancetaxshield.com</a></p>
+        <p>📍 <strong>Based in:</strong> Austin, Texas (remote team)</p>
+    </div>
+
+    <h2>Send a Message</h2>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+                <option value="">Select a topic</option>
+                <option value="calculator-bug">Calculator Bug/Error</option>
+                <option value="tax-question">General Tax Question</option>
+                <option value="partnership">Partnership / Advertising</option>
+                <option value="feedback">Feedback or Suggestion</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Please provide details..."></textarea>
+        </div>
+        <button type="submit" id="submitBtn">✉️ Send Message</button>
+        <div id="successMessage" class="success-message">✅ Thank you! We'll respond within 48 hours.</div>
+    </form>
+    <div class="note">⚠️ For urgent tax matters, please consult a CPA. We provide estimates only, not official tax advice.</div>
+
+    <footer>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="about.html">About</a> | <a href="index.html">Tax Calculator</a></p>
+        <p>© 2026 Freelance Tax Shield</p>
+    </footer>
+</div>
+
+<script>
+    // Simple frontend form handler (no backend - shows success message)
+    // For production, replace with actual form submission (Formspree, Netlify Forms, etc.)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        if (name && email && subject && message) {
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('contactForm').reset();
+            
+            // Optional: In production, send to Formspree or your backend
+            // Example: fetch('https://formspree.io/f/your-endpoint', { method: 'POST', body: new FormData(this) })
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        }
+    });
+</script>
+</body>
+</html>
