@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8643026289824701"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8643026289824701" crossorigin="anonymous"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WVPQ31HQVC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WVPQ31HQVC');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVPQ31HQVC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WVPQ31HQVC');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Freelancer Quarterly Tax Estimator | Avoid Underpayment Penalties</title>
@@ -38,7 +36,7 @@
             margin: 0 auto;
         }
 
-        /* ========== IMPROVED NAVIGATION ========== */
+        /* ========== NAVIGATION ========== */
         .navbar {
             background: white;
             border-radius: 20px;
@@ -61,7 +59,6 @@
             color: transparent;
         }
 
-        /* Desktop navigation */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -88,13 +85,11 @@
             color: #2563eb;
         }
 
-        /* Dropdown container */
         .dropdown {
             position: relative;
             display: inline-block;
         }
 
-        /* Dropdown content - starts hidden */
         .dropdown-content {
             display: none;
             position: absolute;
@@ -121,12 +116,10 @@
             color: #2563eb;
         }
 
-        /* Show dropdown when 'open' class is added */
         .dropdown.open .dropdown-content {
             display: block;
         }
 
-        /* Mobile menu button (hamburger) */
         .menu-btn {
             display: none;
             background: none;
@@ -137,7 +130,6 @@
             padding: 5px 10px;
         }
 
-        /* Mobile sidebar overlay */
         .mobile-overlay {
             display: none;
             position: fixed;
@@ -172,6 +164,11 @@
             font-weight: 500;
             border-radius: 12px;
             display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 1rem;
         }
 
         .mobile-menu a:hover, .mobile-dropdown-btn:hover {
@@ -231,7 +228,7 @@
             margin-top: 0.5rem;
         }
 
-        /* Two column layout */
+        /* Layout Structure */
         .flex-main {
             display: flex;
             flex-wrap: wrap;
@@ -284,7 +281,7 @@
             margin-top: 0.3rem;
         }
 
-        button {
+        button.calc-btn {
             background: linear-gradient(95deg, #2563eb, #1e40af);
             color: white;
             border: none;
@@ -297,7 +294,7 @@
             transition: 0.2s;
         }
 
-        button:hover {
+        button.calc-btn:hover {
             background: linear-gradient(95deg, #1d4ed8, #1e3a8a);
             transform: scale(0.98);
         }
@@ -329,6 +326,7 @@
             border-radius: 20px;
             margin-top: 15px;
             color: #991b1b;
+            font-weight: 500;
         }
 
         .ad-box {
@@ -444,10 +442,10 @@
 </head>
 <body>
 <div class="container">
-    <!-- IMPROVED NAVIGATION BAR -->
+    <!-- NAVIGATION BAR -->
     <nav class="navbar">
         <div class="logo">💰 FreelanceTaxShield</div>
-        <button class="menu-btn" id="menuBtn">☰</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Open Navigation Menu">☰</button>
         <div class="nav-links" id="desktopNav">
             <a href="index.html">🏠 Calculator</a>
             <div class="dropdown" id="guidesDropdown">
@@ -474,7 +472,7 @@
     <!-- Mobile Menu Sidebar -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
-        <button class="close-menu" id="closeMenuBtn">✕</button>
+        <button class="close-menu" id="closeMenuBtn" aria-label="Close Navigation Menu">✕</button>
         <a href="index.html">🏠 Calculator</a>
         <button class="mobile-dropdown-btn" id="mobileGuidesBtn">📚 Guides ▼</button>
         <div class="mobile-dropdown-content" id="mobileGuidesContent">
@@ -503,27 +501,27 @@
         <div class="calculator-card">
             <form id="taxForm">
                 <div class="input-group">
-                    <label>📊 Estimated Annual Freelance Income (1099 / self-employed)</label>
+                    <label for="freelanceIncome">📊 Estimated Annual Freelance Income (1099 / self-employed)</label>
                     <input type="number" id="freelanceIncome" placeholder="e.g., 65000" value="52000" step="1000">
-                    <div class="helper-text">After expenses & deductions (your net profit)</div>
+                    <div class="helper-text">After expenses & business deductions (your net profit)</div>
                 </div>
                 <div class="input-group">
-                    <label>🏢 Other Income (W-2 job, side gig, interest)</label>
+                    <label for="otherIncome">🏢 Other Income (W-2 job, side gig, interest)</label>
                     <input type="number" id="otherIncome" placeholder="e.g., 15000" value="8000" step="1000">
                 </div>
                 <div class="input-group">
-                    <label>📆 Quarterly taxes already paid in current year (YTD)</label>
+                    <label for="paidSoFar">📆 Quarterly taxes already paid in current year (YTD)</label>
                     <input type="number" id="paidSoFar" placeholder="e.g., 4200" value="3200" step="500">
                 </div>
                 <div class="input-group">
-                    <label>👪 Filing status</label>
+                    <label for="filingStatus">👪 Filing status</label>
                     <select id="filingStatus">
-                        <option value="single">Single / Married filing separately</option>
+                        <option value="single">Single</option>
                         <option value="married">Married filing jointly</option>
                         <option value="head">Head of household</option>
                     </select>
                 </div>
-                <button type="button" id="calculateBtn">🔍 Calculate Estimated Taxes</button>
+                <button type="button" id="calculateBtn" class="calc-btn">🔍 Calculate Estimated Taxes</button>
             </form>
             <div id="resultsArea" class="results" style="display: none;"></div>
         </div>
@@ -560,13 +558,13 @@
             <a href="about.html">About</a>
             <a href="sitemap.xml">Sitemap</a>
         </div>
-        <div class="disclaimer">⚠️ Estimates only. Not tax advice. Consult a CPA.</div>
+        <div class="disclaimer">⚠️ Estimates only. Does not include state taxes. Consult a certified tax professional.</div>
         <p>© 2026 Freelance Tax Shield</p>
     </footer>
 </div>
 
 <script>
-    // ========== DROPDOWN CONTROLLER (click to open, stays open) ==========
+    // ========== DROPDOWN CONTROLLER ==========
     const guidesDropdown = document.getElementById('guidesDropdown');
     const resourcesDropdown = document.getElementById('resourcesDropdown');
     const guidesBtn = document.getElementById('guidesBtn');
@@ -580,25 +578,25 @@
     if (guidesBtn) {
         guidesBtn.addEventListener('click', function(e) {
             e.stopPropagation();
+            const isOpen = guidesDropdown.classList.contains('open');
             closeAllDropdowns();
-            guidesDropdown.classList.toggle('open');
+            if (!isOpen) guidesDropdown.classList.add('open');
         });
     }
 
     if (resourcesBtn) {
         resourcesBtn.addEventListener('click', function(e) {
             e.stopPropagation();
+            const isOpen = resourcesDropdown.classList.contains('open');
             closeAllDropdowns();
-            resourcesDropdown.classList.toggle('open');
+            if (!isOpen) resourcesDropdown.classList.add('open');
         });
     }
 
-    // Close dropdowns when clicking outside
     document.addEventListener('click', function() {
         closeAllDropdowns();
     });
 
-    // Prevent closing when clicking inside dropdown
     const guideContent = document.getElementById('guidesContent');
     const resourceContent = document.getElementById('resourcesContent');
     if (guideContent) guideContent.addEventListener('click', function(e) { e.stopPropagation(); });
@@ -644,28 +642,66 @@
         });
     }
 
-    // ========== TAX CALCULATOR ==========
+    // ========== TAX CALCULATOR CORE ENGINE ==========
     function computeTax(freelanceIncome, otherIncome, paidSoFar, filingStatus) {
+        // 1. Calculate Self Employment Tax Base
+        let seTaxableNet = freelanceIncome * 0.9235;
+        let seTax = seTaxableNet * 0.153;
+
+        // 2. Adjust Gross Income (AGI) -> Deduct 50% of SE Tax
+        let seDeduction = seTax * 0.50;
         let totalIncome = freelanceIncome + otherIncome;
-        let standardDeduction = filingStatus === 'single' ? 14600 : (filingStatus === 'married' ? 29200 : 21900);
-        let taxableIncome = Math.max(0, totalIncome - standardDeduction);
+        let adjustedGrossIncome = Math.max(0, totalIncome - seDeduction);
+
+        // 3. Apply 2026 Standard Deduction Map
+        let standardDeduction = 14600; 
+        if (filingStatus === 'married') standardDeduction = 29200;
+        if (filingStatus === 'head') standardDeduction = 21900;
+
+        // 4. Apply 20% Qualified Business Income (QBI) Deduction
+        let qbiDeduction = freelanceIncome * 0.20; 
         
+        // 5. Arrive at Final Federal Taxable Income Base
+        let taxableIncome = Math.max(0, adjustedGrossIncome - standardDeduction - qbiDeduction);
+
+        // 6. Multi-bracket Progressive 2026 Income Tax Execution
         let incomeTax = 0;
-        if (taxableIncome <= 11600) incomeTax = taxableIncome * 0.10;
-        else if (taxableIncome <= 47150) incomeTax = 1160 + (taxableIncome - 11600) * 0.12;
-        else if (taxableIncome <= 100525) incomeTax = 5426 + (taxableIncome - 47150) * 0.22;
-        else if (taxableIncome <= 191950) incomeTax = 17168.5 + (taxableIncome - 100525) * 0.24;
-        else if (taxableIncome <= 243725) incomeTax = 39110.5 + (taxableIncome - 191950) * 0.32;
-        else if (taxableIncome <= 609350) incomeTax = 55678.5 + (taxableIncome - 243725) * 0.35;
-        else incomeTax = 183647.25 + (taxableIncome - 609350) * 0.37;
-        
-        let seTax = freelanceIncome * 0.9235 * 0.153;
+        if (filingStatus === 'single') {
+            if (taxableIncome <= 11600) incomeTax = taxableIncome * 0.10;
+            else if (taxableIncome <= 47150) incomeTax = 1160 + (taxableIncome - 11600) * 0.12;
+            else if (taxableIncome <= 100525) incomeTax = 5426 + (taxableIncome - 47150) * 0.22;
+            else if (taxableIncome <= 191950) incomeTax = 17168.5 + (taxableIncome - 100525) * 0.24;
+            else if (taxableIncome <= 243725) incomeTax = 39110.5 + (taxableIncome - 191950) * 0.32;
+            else if (taxableIncome <= 609350) incomeTax = 55678.5 + (taxableIncome - 243725) * 0.35;
+            else incomeTax = 183647.25 + (taxableIncome - 609350) * 0.37;
+        } else if (filingStatus === 'married') {
+            if (taxableIncome <= 23200) incomeTax = taxableIncome * 0.10;
+            else if (taxableIncome <= 94300) incomeTax = 2320 + (taxableIncome - 23200) * 0.12;
+            else if (taxableIncome <= 201050) incomeTax = 10852 + (taxableIncome - 94300) * 0.22;
+            else if (taxableIncome <= 383900) incomeTax = 34337 + (taxableIncome - 201050) * 0.24;
+            else if (taxableIncome <= 487450) incomeTax = 78221 + (taxableIncome - 383900) * 0.32;
+            else if (taxableIncome <= 731200) incomeTax = 111357 + (taxableIncome - 487450) * 0.35;
+            else incomeTax = 196669.5 + (taxableIncome - 731200) * 0.37;
+        } else if (filingStatus === 'head') {
+            if (taxableIncome <= 16550) incomeTax = taxableIncome * 0.10;
+            else if (taxableIncome <= 63100) incomeTax = 1655 + (taxableIncome - 16550) * 0.12;
+            else if (taxableIncome <= 100500) incomeTax = 7241 + (taxableIncome - 63100) * 0.22;
+            else if (taxableIncome <= 191950) incomeTax = 15469 + (taxableIncome - 100500) * 0.24;
+            else if (taxableIncome <= 243700) incomeTax = 37417 + (taxableIncome - 191950) * 0.32;
+            else if (taxableIncome <= 609350) incomeTax = 53977 + (taxableIncome - 243700) * 0.35;
+            else incomeTax = 181954.5 + (taxableIncome - 609350) * 0.37;
+        }
+
         let totalTax = incomeTax + seTax;
         let remainingTax = Math.max(0, totalTax - paidSoFar);
-        let recommendedPerQuarter = remainingTax / 3;
-        let penaltyRisk = (paidSoFar < (totalTax * 0.65)) && (remainingTax > 1000);
         
-        return { totalTax, remainingTax, recommendedQuarterly: recommendedPerQuarter, penaltyRisk, incomeTax, seTax };
+        // Safe 4-installment metric strategy
+        let quarterlyInstallment = totalTax / 4;
+        
+        // Standard safe harbor penalty logic benchmark rule base
+        let penaltyRisk = (paidSoFar < (totalTax * 0.90)) && (remainingTax > 1000);
+
+        return { totalTax, remainingTax, quarterlyInstallment, penaltyRisk, incomeTax, seTax };
     }
 
     function formatUSD(value) {
@@ -682,17 +718,17 @@
         const resultsDiv = document.getElementById('resultsArea');
         resultsDiv.style.display = 'block';
         
-        let penaltyHtml = result.penaltyRisk ? `<div class="penalty-warning">⚠️ Underpayment Penalty Risk. Pay ${formatUSD(result.recommendedQuarterly)} by next deadline.</div>` : '';
+        let penaltyHtml = result.penaltyRisk ? `<div class="penalty-warning">⚠️ Underpayment Penalty Risk. Your YTD payments are tracking below 90% of total tax liability. Consider raising your contributions.</div>` : '';
         
         resultsDiv.innerHTML = `
             <h3>📋 Your Estimated Tax Summary</h3>
-            <div class="result-row"><span>💰 Total estimated tax:</span> <strong>${formatUSD(result.totalTax)}</strong></div>
-            <div class="result-row"><span>📌 Already paid:</span> <strong>${formatUSD(paidSoFar)}</strong></div>
-            <div class="result-row"><span>⚠️ Remaining tax due:</span> <strong>${formatUSD(result.remainingTax)}</strong></div>
-            <div class="result-row"><span>🧾 Income tax:</span> ${formatUSD(result.incomeTax)}</div>
-            <div class="result-row"><span>🧾 Self-employment tax:</span> ${formatUSD(result.seTax)}</div>
-            <div style="margin-top:16px; padding:12px; background:white; border-radius:20px;">
-                💵 <strong>Recommended next payment:</strong> ${formatUSD(result.recommendedQuarterly)} (per quarter)
+            <div class="result-row"><span>💰 Total Estimated Tax:</span> <strong>${formatUSD(result.totalTax)}</strong></div>
+            <div class="result-row"><span>📌 Already Paid YTD:</span> <strong>${formatUSD(paidSoFar)}</strong></div>
+            <div class="result-row"><span>⚠️ Remaining Tax Due:</span> <strong>${formatUSD(result.remainingTax)}</strong></div>
+            <div class="result-row"><span>🧾 Federal Income Tax:</span> ${formatUSD(result.incomeTax)}</div>
+            <div class="result-row"><span>🧾 Self-Employment Tax:</span> ${formatUSD(result.seTax)}</div>
+            <div style="margin-top:16px; padding:12px; background:white; border-radius:20px; border:1px solid #cbd5e1;">
+                💵 <strong>Target Payment Size:</strong> ${formatUSD(result.quarterlyInstallment)} / per quarter
             </div>
             ${penaltyHtml}
         `;
